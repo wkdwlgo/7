@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/cards.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock %}
+{% block content %}
+{% comment %} <section class="page-section">
+    <form action="chat" method="post" enctype="multipart/form-data" class='abeceee'>
+        {% csrf_token %}
+        <h1>수어 이미지 추가</h1>
+        <span id="file-module-0">
+            <fieldset class = 'abecece'>
+                <legend><h1></h1></legend>
+                <input name="files" type="file" onchange="previewFile(event)">
+            </fieldset>
+        </span>
+        <button class = 'abececc' onclick="addFile()" type="button">파일 추가</button>
+        <div><input type="submit" value="ChatGPT에게 수어로 문의하기"></div>
+    </form>
+    <div id="file-preview"></div>
+</section> {% endcomment %}
+<section class="page-section">
+    <div class="text-center">
+    {% comment %} <link rel="stylesheet" href="{% static 'motionstyle.css' %}"> {% endcomment %}
+    <form action="chat" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 class="mt-4 masthead-heading fs-1 text-uppercase">수어 이미지 추가</h1>
+        <span id="file-module-0">
+            <fieldset>
+                <legend><h1></h1></legend>
+                <input name="files" type="file" onchange="previewFile(event)">
+            </fieldset>
+        </span>
+        <button class="btn btn-aivle btn-xl mt-4" onclick="addFile()" type="button">파일 추가</button>
+        <div><input class="btn btn-aivle btn-xl mt-4 mb-3"  type="submit" value="ChatGPT에게 수어로 문의하기"></div>
+    </form>
+    <div id="file-preview"></div>
+</div>
+</section>
+
+<script>
+    let idNum = 0;
+    function addFile(){
+        deepCopy();
+    }
+
+    function deepCopy()  {
+      // 'test' node 선택
+      const fileModule = document.getElementById('file-module-'+idNum);
+
+      // 노드 복사하기 (deep copy)
+      const newNode = fileModule.cloneNode(true);
+
+      {% comment %} console.log(newNode) {% endcomment %}
+
+      // 복사된 Node id 변경하기
+      idNum++;
+      newNode.id = 'file-module-' + idNum;
+
+      // 복사한 노드 붙여넣기
+      fileModule.after(newNode);
+    }
+
+    function previewFile(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const preview = document.createElement('div');
+            preview.className = 'file-preview-item';
+            const previewImage = document.createElement('img');
+            previewImage.src = e.target.result;
+            preview.appendChild(previewImage);
+            const previewName = document.createElement('p');
+            previewName.innerText = file.name;
+            preview.appendChild(previewName);
+            document.getElementById('file-preview').appendChild(preview);
+        };
+        reader.readAsDataURL(file);
+    }
+</script>
+{% endblock %}

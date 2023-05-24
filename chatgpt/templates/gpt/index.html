@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+{% endblock %}
+{% block content %}
+    <section class="page-section">
+    <section class="page-section" id="services">
+            <form action="chat" method="post" entype="application/x-www-form-urlencoded">
+            {% csrf_token %}
+            <div class="text-center">
+            <div class="masthead-heading fs-2">ChatGPT에게 요청하기</div>
+            <hr id="title_line">
+            <textarea id="question" class="w-75 h-25 mt-4" name="question"  placeholder="input question."></textarea>
+            <div class ='question_button'>
+            <button class="btn btn-primary btn-xl" type="submit" >질문</button>
+            </div>
+            </div>
+            </form>
+    </section>
+    <section class="page-section">
+    </section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% load static %}
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'gtp/style.css' %}">
+{% endblock %}
+<form action="chat" method="post" entype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <div id="file-module-0">
+        <label>chatgtp에게 요청하기</label>
+        <textarea id="question" name="question">{{question}}</textarea>
+    </div>
+    <div>
+      <label>응답</label>
+      <span id="result">{{result}}</span>
+    </div>
+    <div><button id="text-button" type="submit">질문</button></div>
+</form>
+
+<script>
+
+</script>
+
+{# result.html 과 index.html 의 중복 문제 발생??#}
+{# AJAX 로 구현 ??#}
+{# 버튼을 누를 경우 서버 측에 POST로 요청 #}
+{# 그러면 뷰 측에서 서버 측에서 받은 데이터를 기반으로 노드를 추가 #}

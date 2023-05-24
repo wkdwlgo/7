@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extrahead %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'css/cards.css' %}">
+{% endblock %}
+{% block content %}
+<form action="chat" method="post" entype="application/x-www-form-urlencoded">
+  <div class="one-box">  
+  {% csrf_token %}
+    <section class="page-section" id="services">
+      <div id="file-module-0" class="text-center">
+        <div class="masthead-heading fs-1 text-uppercase mt-5">ChatGPT에게 요청하기</div>
+        <hr id="title_line">
+        <textarea id="question" class="masthead-heading w-75 h-25 mt-4" name="question" rows='12'>{{question}}</textarea>
+        <div class="masthead-heading fs-1 text-uppercase mt-5">답변</div>
+        <div class="masthead-heading fs-4" id="result">{{result}}</div>
+    </div>
+  </div>
+</form>
+{% endblock %}
