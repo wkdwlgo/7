@@ -23,23 +23,33 @@
 <section class="page-section">
     <div class="text-center">
     {% comment %} <link rel="stylesheet" href="{% static 'motionstyle.css' %}"> {% endcomment %}
-    <form action="chat" method="post" enctype="multipart/form-data">
+    <form id="frm" action="chat" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h1 class="mt-5 masthead-heading fs-1 text-uppercase">수어 이미지 추가</h1>
         <span id="file-module-0">
             <fieldset>
                 <legend><h1></h1></legend>
-                <input name="files" type="file" onchange="previewFile(event)">
+                <input class="upload" name="files" type="file" onchange="previewFile(event)">
             </fieldset>
         </span>
         <button class="btn btn-aivle btn-xl mt-4" onclick="addFile()" type="button">파일 추가</button>
-        <div><input class="btn btn-aivle btn-xl mt-4 mb-3"  type="submit" value="ChatGPT에게 수어로 문의하기"></div>
+        <div><input class="btn btn-aivle btn-xl mt-4 mb-3"  type="button" onclick="test()" value="ChatGPT에게 수어로 문의하기"></div>
     </form>
     <div id="file-preview"></div>
 </div>
 </section>
 
 <script>
+    function test(){
+        const upload = document.getElementsByTagName('img');
+        if (upload.length == 1) {
+            alert("이미지를 업로드 해 주세요")
+            return
+        }
+
+        document.getElementById('frm').submit();
+    }
+
     let idNum = 0;
     function addFile(){
         deepCopy();
@@ -50,12 +60,14 @@
       const fileModule = document.getElementById('file-module-'+idNum);
 
       // 노드 복사하기 (deep copy)
-      const newNode = fileModule.cloneNode(true);
+      idNum++;
+      htmlText = '<span id="file-module-'+idNum+'"><fieldset class="abecece"><legend><h1></h1></legend><input name="files" type="file" onchange="previewFile(event)" required=""></fieldset></span>'
+      fileModule.insertAdjacentHTML('afterend', htmlText)
 
       {% comment %} console.log(newNode) {% endcomment %}
 
       // 복사된 Node id 변경하기
-      idNum++;
+      //idNum++;
       newNode.id = 'file-module-' + idNum;
 
       // 복사한 노드 붙여넣기
