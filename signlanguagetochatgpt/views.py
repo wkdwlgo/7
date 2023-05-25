@@ -8,7 +8,7 @@ import cv2
 import string
 import mlflow
 import mlflow.keras
-from chatgpt.views import chatGPT
+from selfchatgpt.views import chatGPT
 logger = logging.getLogger('mylogger')
 #signlanguage/models.py의 Result 모델을 import한다.
 from .models import ChatResult, Result
@@ -48,9 +48,8 @@ def chat(request):
             # mlflow 로딩
             mlflow_uri="http://mini7-mlflow.carpediem.so/"
             mlflow.set_tracking_uri(mlflow_uri)
-            model_uri = "models:/Sign_Signal/production"
+            model_uri = "models:/Sign_Signal_13/production"
             model = mlflow.keras.load_model(model_uri)
-
 
             # history 저장을 위해 객체에 담아서 DB에 저장한다.
             # 이때 파일시스템에 저장도 된다.
