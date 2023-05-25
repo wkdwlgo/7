@@ -10956,7 +10956,7 @@ header.masthead {
   background-image: url("../assets/img/header-bg.png");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center center;
+  background-position: center 100px;
   background-size: cover;
 }
 header.masthead .masthead-subheading {
