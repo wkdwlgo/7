@@ -7787,6 +7787,12 @@ textarea.form-control-lg {
   padding-bottom: 3rem !important;
 }
 
+.py-6 {
+  padding-top: 10rem !important;
+  padding-bottom: 10rem !important;
+}
+
+
 .pt-0 {
   padding-top: 0 !important;
 }
@@ -11396,3 +11402,8 @@ div.masthead-heading.fs-4{
 #file-preview {
   text-align: center;
 }
+header.masthead .masthead-subheading {
+  margin-top: -100px;}
+  
+header.masthead .masthead-heading {
+    margin-top: -30px;}
