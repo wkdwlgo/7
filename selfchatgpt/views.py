@@ -4,7 +4,7 @@ from django.shortcuts import render
 import openai
 # Create your views here.
 
-openai.api_key = "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"
+openai.api_key = "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"
 #API 키를 설정하면 openai.ChatCompletion.create()과 같은 함수를 호출할 때 인증이 자동으로 수행
 
 #chatGPT에게 채팅 요청 API
