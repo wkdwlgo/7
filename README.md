@@ -3,11 +3,11 @@
  ChatGPT를 수어로 사용하는, 웹서비스 데모 구현
 
 
-## Getting Started
+## 시작하기
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Django로 구현하였습니다. 해당 코드는 vscode나 pycharm에서 conda 환경 설정 후에 빌드 하실 수 있습니다. 
 
-### Prerequisites
+### 사전 요구 사항
 
 What things you need to install the software and how to install them
 
